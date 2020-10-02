@@ -289,10 +289,15 @@ class FlutterMentionsState extends State<FlutterMentions> {
   }
 
   void addMention(Map<String, dynamic> value, [Mention list]) {
-    final _list = list ?? _selectedMention != null
+    var _list;
+    if(list != null) {
+      _list = list;
+    } else {
+      _list = _selectedMention != null
         ? widget.mentions.firstWhere(
             (element) => _selectedMention.str.contains(element.trigger))
         : widget.mentions[0];
+    } 
 
     // find the text by range and replace with the new value.
     controller.text = controller.value.text.replaceRange(
