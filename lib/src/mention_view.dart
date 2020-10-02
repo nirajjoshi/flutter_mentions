@@ -422,7 +422,7 @@ class FlutterMentionsState extends State<FlutterMentions> {
                 cursorRadius: widget.cursorRadius,
                 cursorWidth: widget.cursorWidth,
                 buildCounter: widget.buildCounter,
-                autofillHints: widget.autofillHints,
+                // autofillHints: widget.autofillHints,
                 decoration: widget.decoration,
                 expands: widget.expands,
                 onEditingComplete: widget.onEditingComplete,
