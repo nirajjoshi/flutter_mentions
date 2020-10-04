@@ -446,7 +446,11 @@ class FlutterMentionsState extends State<FlutterMentions> {
                   }
 
                   if (widget.onMarkupChanged != null) {
-                    widget.onMarkupChanged(controller.markupText);
+                    if(controller.markupText != null && controller.markupText.isNotEmpty) {
+                      widget.onMarkupChanged(controller.markupText);
+                    } else {
+                      widget.onMarkupChanged('');
+                    }
                   }
 
                   if (widget.onSearchChanged != null && _selectedMention != null &&
