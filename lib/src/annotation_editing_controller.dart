@@ -15,21 +15,23 @@ class AnnotationEditingController extends TextEditingController {
     final someVal = text.splitMapJoin(
       RegExp('$_pattern'),
       onMatch: (Match match) {
-        final mention = _mapping[match[0]] ??
+        if(_mapping != null && _mapping.isNotEmpty) {
+          final mention = _mapping[match[0]] ??
             _mapping[_mapping.keys.firstWhere((element) {
               final reg = RegExp(element);
-
               return reg.hasMatch(match[0]);
             })];
-
-        // Default markup format for mentions
-        if (!mention.disableMarkup) {
-          return mention.markupBuilder != null
-              ? mention.markupBuilder(
-                  mention.trigger, mention.id, mention.display)
-              : '${mention.trigger}[__${mention.id}__](__${mention.display}__)';
+          // Default markup format for mentions
+          if (!mention.disableMarkup) {
+            return mention.markupBuilder != null
+                ? mention.markupBuilder(
+                    mention.trigger, mention.id, mention.display)
+                : '${mention.trigger}[__${mention.id}__](__${mention.display}__)';
+          } else {
+            return match[0];
+          } 
         } else {
-          return match[0];
+          return '';
         }
       },
       onNonMatch: (String text) {
