@@ -1,3 +1,17 @@
+## [1.0.4] - 6 Oct 2020
+
+- Fixed an issue where if there no mention data present markupText would through an error.
+
+## [1.0.3] - 5 Oct 2020
+
+- `onSuggestionVisibleChanged` added - Triggers when the suggestion list visibility changed.
+- `controller.showSuggestion` value notifier added.
+
+## [1.0.2] - 5 Oct 2020
+
+- Updated depencies.
+- Fixed an issue where markup was not updated if the suggestion was pressed.
+
 ## [1.0.1] - 30 Sep 2020
 
 - `hideSuggestionList` property added.
