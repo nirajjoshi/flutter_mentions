@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     data: [
                       {
                         'id': '61as61fsa',
-                        'display': 'fayeedP',
+                        'display': '~|[]{}#%^*+=_\|<>\$£€•.,?!',
                         'full_name': 'Fayeed Pawaskar',
                         'photo':
                             'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
