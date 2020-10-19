@@ -1,3 +1,27 @@
+## [1.0.10] - 19 Oct 2020
+
+- Fixed an issue where using special characters would crash the widget.
+
+## [1.0.9] - 15 Oct 2020
+
+- Added a fix for a edge case for emoji fix from previous version.
+
+## [1.0.8] - 15 Oct 2020
+
+- Fixed an issue where no data would cause the widget to crash when a emoji is entered.
+
+## [1.0.7] - 13 Oct 2020
+
+- Fixed an issue where multiple triggers were not working.
+
+## [1.0.6] - 8 Oct 2020
+
+- Removed an unnecessary parameter from the onSearchChanged.
+
+## [1.0.5] - 8 Oct 2020
+
+- Fixed an issue where addMention would trigger onSearchChanged with previous value.
+
 ## [1.0.4] - 6 Oct 2020
 
 - Fixed an issue where if there no mention data present markupText would through an error.

@@ -293,15 +293,21 @@ class FlutterMentionsState extends State<FlutterMentions> {
   }
 
   void addMention(Map<String, dynamic> value, [Mention list]) {
-    final _list = list != null ?? _selectedMention != null
+    final selectedMention = _selectedMention;
+
+    setState(() {
+      _selectedMention = null;
+    });
+
+    final _list = selectedMention != null
         ? widget.mentions.firstWhere(
-            (element) => _selectedMention.str.contains(element.trigger))
+            (element) => selectedMention.str.contains(element.trigger))
         : widget.mentions[0];
 
     // find the text by range and replace with the new value.
     controller.text = controller.value.text.replaceRange(
-      _selectedMention.start,
-      _selectedMention.end,
+      selectedMention.start,
+      selectedMention.end,
       "${_list.trigger}${value['display']}${widget.appendSpaceOnAdd ? ' ' : ''}",
     );
 
@@ -309,7 +315,7 @@ class FlutterMentionsState extends State<FlutterMentions> {
 
     // Move the cursor to next position after the new mentioned item.
     int nextCursorPosition =
-        _selectedMention.start + 1 + value['display']?.length ?? 0;
+        selectedMention.start + 1 + value['display']?.length ?? 0;
     if (widget.appendSpaceOnAdd) nextCursorPosition++;
     controller.selection =
         TextSelection.fromPosition(TextPosition(offset: nextCursorPosition));
@@ -431,9 +437,7 @@ class FlutterMentionsState extends State<FlutterMentions> {
                     }).toList(),
                     onTap: (value) {
                       addMention(value, list);
-                      setState(() {
-                        showSuggestions.value = false;
-                      });
+                      showSuggestions.value = false;
                     },
                   )
                 : Container();
